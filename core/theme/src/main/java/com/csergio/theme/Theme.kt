@@ -1,4 +1,4 @@
-package com.csergio.composepractice.ui.theme
+package com.csergio.theme
 
 import android.app.Activity
 import android.os.Build
