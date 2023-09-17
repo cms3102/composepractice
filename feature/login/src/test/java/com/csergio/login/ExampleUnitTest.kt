@@ -1,4 +1,4 @@
-package com.csergio.feature
+package com.csergio.login
 
 import org.junit.Test
 

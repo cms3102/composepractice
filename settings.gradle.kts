@@ -16,7 +16,7 @@ dependencyResolutionManagement {
 rootProject.name = "ComposePractice"
 include(":app")
 include(":core:domain")
-include(":feature")
 include(":core:theme")
 include(":core:data")
 include(":core:network")
+include(":feature:login")

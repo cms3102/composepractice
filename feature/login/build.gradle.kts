@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.csergio.feature"
+    namespace = "com.csergio.signin"
     compileSdk = 33
 
     defaultConfig {
@@ -31,6 +31,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures { // added to fix backend internal error
+        compose = true
+    }
+    composeOptions { // added to fix compose compiler compatibility error
+        kotlinCompilerExtensionVersion = "1.4.3"
+    }
 }
 
 dependencies {
@@ -38,6 +44,11 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
+    implementation(libs.lottie)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

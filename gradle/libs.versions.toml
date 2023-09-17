@@ -29,6 +29,7 @@ material3 = { group = "androidx.compose.material3", name = "material3" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.1" }
+lottie = { group = "com.airbnb.android", name = "lottie-compose", version = "6.1.0" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
