@@ -57,7 +57,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.csergio.signin.R
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onLogin: () -> Unit) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
     var error by remember { mutableStateOf(false) }
@@ -162,13 +162,14 @@ fun LoginScreen() {
                 onClick = { 
                     if (email.text.isNotEmpty() && password.text.isNotEmpty()) {
                         error = false
+                        onLogin.invoke()
                     } else {
                         error = true
                     }
                 }
             ) {
                 Text(
-                    text = "Sign In",
+                    text = "Login",
                     style = MaterialTheme.typography.titleMedium.copy(fontSize = 20.sp)
                 )
             }
@@ -202,7 +203,7 @@ fun LoginScreen() {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    text = "Sign in with Google",
+                    text = "Login with Google",
                     style = MaterialTheme.typography.titleSmall.copy(fontSize = 18.sp)
                 )
             }
@@ -223,7 +224,7 @@ fun LoginScreen() {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    text = "Sign in with Kakao",
+                    text = "Login with Kakao",
                     style = MaterialTheme.typography.titleSmall.copy(fontSize = 18.sp)
                 )
             }
