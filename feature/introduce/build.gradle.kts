@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.csergio.signin"
+    namespace = "com.csergio.introduce"
     compileSdk = 33
 
     defaultConfig {
@@ -40,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)

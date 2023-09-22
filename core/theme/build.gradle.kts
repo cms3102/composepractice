@@ -47,7 +47,7 @@ dependencies {
     implementation(platform(libs.compose.bom))
     api(libs.ui)
     api(libs.ui.tooling.preview)
-    api(libs.material3)
+    api(libs.compose.material3)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

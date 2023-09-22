@@ -10,6 +10,10 @@ activity-compose = "1.7.2"
 compose-bom = "2023.09.00"
 appcompat = "1.6.1"
 material = "1.9.0"
+android-ui-graphics = "1.5.1"
+lottie = "6.1.0"
+compose-navigation = "2.7.3"
+hilt-navigation-compose = "1.0.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -25,11 +29,14 @@ ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-material3 = { group = "androidx.compose.material3", name = "material3" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+compose-material = { group = "androidx.compose.material", name = "material" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.1" }
-lottie = { group = "com.airbnb.android", name = "lottie-compose", version = "6.1.0" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "android-ui-graphics" }
+lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

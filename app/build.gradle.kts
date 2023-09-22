@@ -53,10 +53,15 @@ android {
 dependencies {
     implementation(project(":core:theme"))
     implementation(project(":feature:login"))
+    implementation(project(":feature:introduce"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
+    implementation(libs.compose.navigation)
+    implementation(libs.material)
+    implementation(libs.compose.material)
+    implementation(libs.hilt.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
