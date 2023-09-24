@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.csergio.network"
+    namespace = "com.csergio.citydata"
     compileSdk = 33
 
     defaultConfig {
@@ -31,24 +31,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.retrofit)
+    implementation(platform(libs.compose.bom))
     implementation(libs.hilt.navigation.compose)
-    implementation(libs.okhttp.bom)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging.interceptor)
-    implementation(libs.gson)
-    implementation(libs.gson.converter)
-    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.lottie)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

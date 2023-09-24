@@ -234,31 +234,6 @@ fun LoginScreen(onLogin: () -> Unit) {
             val annotatedString = AnnotatedString.Builder(registerString).apply {
                 addStyle(style = SpanStyle(color = Color.Blue), start = start, end = end)
             }.toAnnotatedString()
-
-            Text(
-                text = annotatedString,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-                    .clickable {  }
-            )
-            Text(
-                text = annotatedString,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-                    .clickable {  }
-            )
-            Text(
-                text = annotatedString,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-                    .clickable {  }
-            )
-            Text(
-                text = annotatedString,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-                    .clickable {  }
-            )
             Text(
                 text = annotatedString,
                 textAlign = TextAlign.Center,

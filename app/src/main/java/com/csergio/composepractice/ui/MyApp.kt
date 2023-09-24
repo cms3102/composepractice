@@ -1,63 +1,42 @@
 package com.csergio.composepractice.ui
 
-import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.AppBarDefaults
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.Surface
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.csergio.composepractice.navigation.MyNavHost
-import com.csergio.introduce.IntroduceScreen
-import com.csergio.login.LoginScreen
+import com.csergio.composepractice.navigation.NavigationHelper
 
 @Composable
-fun MyApp(navHostController: NavHostController) {
-    println("현재 위치 : ${navHostController.currentDestination}")
+fun MyApp(navHostController: NavHostController = rememberNavController()) {
+    val backStackEntry by navHostController.currentBackStackEntryAsState()
+    val currentDestination = backStackEntry?.destination
+    println("현재 위치 : ${currentDestination?.label} / $currentDestination")
+    val showSystemBars = NavigationHelper.showSystemBars(currentDestination?.route)
     Scaffold(
         topBar = {
-            TopAppBar("앱바 타이틀")
+            if (showSystemBars) {
+                TopAppBar("앱바 타이틀")
+            }
         },
         bottomBar = {
-            BottomNavigationBar()
+            if (showSystemBars) {
+                BottomNavigationBar()
+            }
         }
     ) { paddingValues ->
         Box(modifier = Modifier.padding(paddingValues)) {
             MyNavHost(navController = navHostController)
         }
-//        var loginState by remember { mutableStateOf(false) }
-//        Crossfade(
-//            targetState = loginState,
-//            label = "",
-//            modifier = Modifier.padding(paddingValues)
-//        ) { isLogin ->
-//            if (isLogin) {
-//                IntroduceScreen {
-//
-//                }
-//            } else {
-//                LoginScreen {
-//                    loginState = true
-//                }
-//            }
-//        }
     }
 }
 
@@ -71,7 +50,9 @@ fun TopAppBar(title: String) {
 
 @Composable
 fun BottomNavigationBar() {
-    NavigationBar {
+    NavigationBar(
+
+    ) {
         Text(text = "이게 맞니")
     }
 }

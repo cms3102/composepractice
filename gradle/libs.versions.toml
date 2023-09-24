@@ -14,6 +14,11 @@ android-ui-graphics = "1.5.1"
 lottie = "6.1.0"
 compose-navigation = "2.7.3"
 hilt-navigation-compose = "1.0.0"
+androidx-core-splashscreen = "1.0.1"
+retrofit = "2.9.0"
+okhttp = "4.10.0"
+gson = "2.10.1"
+kotlinx-serialization-json = "1.5.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -37,6 +42,14 @@ androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graph
 lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-core-splashscreen" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
