@@ -1,8 +1,5 @@
-package com.csergio.network.model
+package com.csergio.domain.entity
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class CityData(
     val title: String,
     val image: String,

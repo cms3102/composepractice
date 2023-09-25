@@ -2,6 +2,7 @@ package com.csergio.network.di
 
 import com.csergio.network.BuildConfig
 import com.csergio.network.api.CityDataService
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,6 +47,12 @@ class NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return Gson()
     }
 
     @Provides

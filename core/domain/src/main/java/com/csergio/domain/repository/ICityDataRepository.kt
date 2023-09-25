@@ -1,6 +1,6 @@
-package com.csergio.data.repository
+package com.csergio.domain.repository
 
-import com.csergio.network.model.CityData
+import com.csergio.domain.entity.CityData
 import kotlinx.coroutines.flow.Flow
 
 interface ICityDataRepository {
