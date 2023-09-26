@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ICityDataRepository {
 
-    suspend fun getCityData() : Flow<List<CityData>>
+    suspend fun getCityData() : Flow<Result<List<CityData>>>
 
 }
