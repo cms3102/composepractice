@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.csergio.signin.R
+import com.csergio.features.login.R
 
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {

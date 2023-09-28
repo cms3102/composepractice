@@ -1,14 +1,13 @@
 package com.csergio.domain.usecase
 
-import com.csergio.domain.datasource.ICityDataDataSource
 import com.csergio.domain.entity.CityData
-import kotlinx.coroutines.flow.Flow
+import com.csergio.domain.repository.ICityDataRepository
 import javax.inject.Inject
 
 class CityDataUseCase @Inject constructor(
-    private val cityDataDataSource: ICityDataDataSource
-) : ICityDataDataSource {
-    override suspend fun getCityData(): Flow<Result<List<CityData>>> =
-        cityDataDataSource.getCityData()
+    private val cityDataRepository: ICityDataRepository
+) {
+     suspend operator fun invoke(): Result<List<CityData>> =
+        cityDataRepository.getCityData()
 
 }

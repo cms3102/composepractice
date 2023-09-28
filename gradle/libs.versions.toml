@@ -7,7 +7,7 @@ androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.6.2"
 activity-compose = "1.7.2"
-compose-bom = "2023.09.00"
+compose-bom = "2023.09.01"
 appcompat = "1.6.1"
 material = "1.9.0"
 android-ui-graphics = "1.5.1"
@@ -19,6 +19,12 @@ retrofit = "2.9.0"
 okhttp = "4.10.0"
 gson = "2.10.1"
 kotlinx-serialization-json = "1.5.1"
+androidx-lifecycle = "2.6.2"
+coil-compose = "2.4.0"
+hilt = "2.48"
+org-jetbrains-kotlin-jvm = "1.8.10"
+javax-inject = "1"
+ksp-plugin = "1.8.10-1.0.9"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -50,11 +56,19 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inject" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
 com-android-library = { id = "com.android.library", version.ref = "agp" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp-plugin" }
 
 [bundles]
 

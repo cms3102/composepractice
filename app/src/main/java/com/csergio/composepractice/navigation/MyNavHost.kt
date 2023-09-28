@@ -13,9 +13,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.csergio.citydata.navigation.cityDataScreen
+import com.csergio.citydata.navigation.navigateToCityData
+import com.csergio.citydata.viewmodel.CityDataViewModel
 import com.csergio.introduce.navigation.introduceScreen
 import com.csergio.introduce.navigation.navigateToIntroduce
 import com.csergio.login.navigation.loginRoute
@@ -36,6 +40,9 @@ fun MyNavHost(
             loginState = true
             navController.navigateToIntroduce()
         }
-        introduceScreen {  }
+        introduceScreen {
+            navController.navigateToCityData()
+        }
+        cityDataScreen()
     }
 }

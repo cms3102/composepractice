@@ -2,6 +2,8 @@
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp.plugin)
+    alias(libs.plugins.hilt.plugin)
 }
 
 android {
@@ -31,11 +33,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         buildConfig = true
@@ -53,9 +55,14 @@ android {
 
 dependencies {
     implementation(project(":core:theme"))
-    implementation(project(":feature:login"))
+    implementation(project(":core:data"))
+    implementation(project(":core:domain"))
+    implementation(project(":feature:citydata"))
     implementation(project(":feature:introduce"))
+    implementation(project(":feature:login"))
 
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.android)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)

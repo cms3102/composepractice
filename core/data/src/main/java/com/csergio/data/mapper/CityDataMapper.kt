@@ -13,6 +13,7 @@ internal fun Result<List<CityDataModel>>.toEntity(): Result<List<CityData>> {
 
 internal fun CityDataModel.toEntity(): CityData {
     return CityData(
+        id = id,
         title = title,
         image = image,
         description = description

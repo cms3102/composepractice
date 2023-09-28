@@ -7,11 +7,12 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CityDataRepository @Inject constructor(
-    private val cityDataDataSource: ICityDataDataSource
+//    private val cityDataDataSource: ICityDataDataSource
 ) : ICityDataRepository {
 
-    override suspend fun getCityData(): Flow<Result<List<CityData>>> {
-        return cityDataDataSource.getCityData()
+    override suspend fun getCityData(): Result<List<CityData>> {
+//        return cityDataDataSource.getCityData()
+        return Result.success(emptyList())
     }
 
 }

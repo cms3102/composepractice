@@ -2,10 +2,12 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp.plugin)
+    alias(libs.plugins.hilt.plugin)
 }
 
 android {
-    namespace = "com.csergio.citydata"
+    namespace = "com.csergio.features.citydata"
     compileSdk = 33
 
     defaultConfig {
@@ -25,17 +27,26 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
+    }
+    buildFeatures { // added to fix backend internal error
+        compose = true
+    }
+    composeOptions { // added to fix compose compiler compatibility error
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
 }
 
 dependencies {
+    implementation(project(":core:data"))
     implementation(project(":core:domain"))
 
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.android)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -44,7 +55,9 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.ui.tooling.preview)
     implementation(libs.compose.material3)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.lottie)
+    implementation(libs.coil)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

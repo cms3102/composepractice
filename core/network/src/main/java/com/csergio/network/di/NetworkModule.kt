@@ -1,6 +1,5 @@
 package com.csergio.network.di
 
-import com.csergio.network.BuildConfig
 import com.csergio.network.api.CityDataService
 import com.google.gson.Gson
 import dagger.Module
@@ -43,7 +42,7 @@ class NetworkModule {
         okHttpClient: OkHttpClient,
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://run.mocky.io/v3/6538de16-1cbd-4eb0-bf2d-354242f3cbba/")
+            .baseUrl("https://run.mocky.io/v3/47f63e6b-129f-42a5-817a-ad6ee811e81b/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -56,6 +55,9 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideCityDataApiService(retrofit: Retrofit) = retrofit.create(CityDataService::class.java)
+    @Singleton
+    fun provideCityDataApiService(retrofit: Retrofit): CityDataService {
+        return retrofit.create(CityDataService::class.java)
+    }
 
 }
