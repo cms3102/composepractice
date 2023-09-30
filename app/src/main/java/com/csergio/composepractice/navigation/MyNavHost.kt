@@ -14,6 +14,7 @@ import com.csergio.introduce.navigation.introduceScreen
 import com.csergio.introduce.navigation.navigateToIntroduce
 import com.csergio.login.navigation.loginRoute
 import com.csergio.login.navigation.loginScreen
+import com.csergio.settings.navigation.settingsScreen
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -33,5 +34,6 @@ fun MyNavHost(
             navController.navigateToTour()
         }
         tourScreen()
+        settingsScreen()
     }
 }
