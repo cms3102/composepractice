@@ -54,7 +54,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:theme"))
+    implementation(project(":core:common"))
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
     implementation(project(":feature:tour"))
@@ -72,6 +72,8 @@ dependencies {
     implementation(libs.compose.material)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.core.splashscreen)
+    implementation(libs.gson)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -2,7 +2,7 @@ package com.csergio.tour.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.csergio.tour.TourState
+import com.csergio.tour.state.TourState
 import com.csergio.domain.usecase.TourUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

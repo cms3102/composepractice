@@ -1,4 +1,4 @@
-package com.csergio.theme
+package com.csergio.common.theme
 
 import android.app.Activity
 import android.os.Build

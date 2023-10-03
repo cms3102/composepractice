@@ -1,4 +1,4 @@
-package com.csergio.theme
+package com.csergio.common.theme
 
 import androidx.compose.ui.graphics.Color
 

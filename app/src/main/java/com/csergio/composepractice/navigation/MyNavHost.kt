@@ -1,5 +1,6 @@
 package com.csergio.composepractice.navigation
 
+import android.net.Uri
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -15,6 +16,9 @@ import com.csergio.introduce.navigation.navigateToIntroduce
 import com.csergio.login.navigation.loginRoute
 import com.csergio.login.navigation.loginScreen
 import com.csergio.settings.navigation.settingsScreen
+import com.csergio.tour.navigation.navigateToTourDetail
+import com.csergio.tour.navigation.tourDetailScreen
+import com.google.gson.Gson
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -33,7 +37,12 @@ fun MyNavHost(
         introduceScreen {
             navController.navigateToTour()
         }
-        tourScreen()
+        tourScreen { tourData ->
+            val dataJson = Gson().toJson(tourData)
+            val dataUri = Uri.encode(dataJson)
+            navController.navigateToTourDetail(dataUri)
+        }
+        tourDetailScreen()
         settingsScreen()
     }
 }

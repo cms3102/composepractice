@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
+    implementation(project(":core:common"))
 
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
@@ -58,6 +59,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.lottie)
     implementation(libs.coil)
+    implementation(libs.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

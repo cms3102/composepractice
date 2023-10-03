@@ -1,4 +1,4 @@
-package com.csergio.tour
+package com.csergio.tour.state
 
 import com.csergio.domain.entity.TourData
 

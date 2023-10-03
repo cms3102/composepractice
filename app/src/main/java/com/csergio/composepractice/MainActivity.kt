@@ -13,9 +13,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import com.csergio.composepractice.ui.MyApp
-import com.csergio.theme.ComposePracticeTheme
+import com.csergio.common.theme.ComposePracticeTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -52,7 +51,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    com.csergio.theme.ComposePracticeTheme {
+    ComposePracticeTheme {
         MyApp(rememberNavController())
     }
 }
