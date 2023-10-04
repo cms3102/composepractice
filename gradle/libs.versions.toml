@@ -25,6 +25,9 @@ hilt = "2.48"
 org-jetbrains-kotlin-jvm = "1.8.10"
 javax-inject = "1"
 ksp-plugin = "1.8.10-1.0.9"
+iconics-core = "5.4.0"
+iconics-compose = "5.4.0"
+fontawesome = "5.9.0.2-kotlin"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -61,6 +64,9 @@ coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compos
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inject" }
+iconics-core = { module = "com.mikepenz:iconics-core", version.ref = "iconics-core" }
+iconics-compose = { module = "com.mikepenz:iconics-compose", version.ref = "iconics-compose" }
+fontawesome = { module = "com.mikepenz:fontawesome-typeface", version.ref = "fontawesome" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

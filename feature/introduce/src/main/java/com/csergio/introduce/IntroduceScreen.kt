@@ -1,35 +1,41 @@
 package com.csergio.introduce
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
+import com.csergio.features.introduce.R
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -37,26 +43,40 @@ import kotlinx.coroutines.launch
 fun IntroduceScreen(onFinished: () -> Unit) {
     val pagerState = rememberPagerState { introList.size }
     val coroutineScope = rememberCoroutineScope()
-    Box(
-        modifier = Modifier.fillMaxSize(),
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White),
     ) {
+        Spacer(modifier = Modifier.height(20.dp))
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
         ) { page ->
-            IntroItem(introList[page])
+            IntroItem(introList[page], page)
         }
         Column(
-            modifier = Modifier.align(Alignment.BottomCenter),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row {
-                introList.forEachIndexed { index, intro ->
-                    Icon(
-                        imageVector = Icons.Default.Favorite,
-                        contentDescription = "",
-                        tint = if (index == pagerState.currentPage) Color.Red else Color.Gray
-                    )
+                introList.forEachIndexed { index, _ ->
+                    Box(modifier = Modifier.padding(4.dp)) {
+                        Box(
+                            modifier = Modifier
+                                .background(
+                                    color = if (index == pagerState.currentPage) {
+                                        MaterialTheme.colorScheme.primary
+                                    } else {
+                                        Color.LightGray.copy(alpha = 0.5f)
+                                    },
+                                    shape = CircleShape
+                                )
+                                .size(10.dp)
+                        )
+                    }
                 }
             }
             Button(
@@ -74,7 +94,7 @@ fun IntroduceScreen(onFinished: () -> Unit) {
                 },
                 shape = CircleShape
             ) {
-                Text(text = if (pagerState.isLastPage()) "Let's Start" else "Next")
+                Text(text = if (pagerState.isLastPage()) "시작해 볼까요" else "다음")
             }
         }
     }
@@ -86,23 +106,43 @@ private fun PagerState.isLastPage(): Boolean {
 }
 
 @Composable
-fun IntroItem(item: Intro) {
+fun IntroItem(item: Intro, page: Int) {
     Box(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(40.dp)
+            .clickable { },
         contentAlignment = Alignment.Center
     ) {
-        Card(
-            shape = RoundedCornerShape(20.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            border = BorderStroke(1.dp, Color.LightGray.copy(0.5f)),
+            shape = RoundedCornerShape(12.dp),
+            color = Color.White
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(15.dp)
+                modifier = Modifier.padding(15.dp),
+                verticalArrangement = Arrangement.Center
             ) {
+                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+                    when(page) {
+                        0 -> R.raw.intro1
+                        1 -> R.raw.intro2
+                        else -> R.raw.intro3
+                    }
+                ))
+                LottieAnimation(
+                    composition = composition,
+                    modifier = Modifier
+                        .size(280.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+                Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     text = item.title,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.displayMedium,
+                    style = MaterialTheme.typography.displaySmall,
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
@@ -120,8 +160,14 @@ data class Intro(
     val desc: String
 )
 
-private val introList = listOf<Intro>(
-    Intro(title = "소개 1번 입니다.", desc = "소개 1번 설명 입니다."),
-    Intro(title = "소개 2번 입니다.", desc = "소개 2번 설명 입니다."),
-    Intro(title = "소개 3번 입니다.", desc = "소개 3번 설명 입니다."),
+private val introList = listOf(
+    Intro(title = "안녕하세요", desc = "만나서 반가워요"),
+    Intro(title = "무슨 말을 해야 할지", desc = "모르겠어요.."),
+    Intro(title = "여기서 마무리 하고", desc = "넘어가 볼까요"),
 )
+
+@Preview
+@Composable
+fun IntroduceScreenPreview() {
+    IntroduceScreen { }
+}

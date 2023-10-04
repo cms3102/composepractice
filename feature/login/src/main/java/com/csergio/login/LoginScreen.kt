@@ -33,9 +33,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -52,12 +54,14 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.csergio.features.login.R
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginScreen(onLogin: () -> Unit) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var password by remember { mutableStateOf(TextFieldValue("")) }
     var error by remember { mutableStateOf(false) }
     var passwordVisualTransformation by remember { mutableStateOf<VisualTransformation>(PasswordVisualTransformation()) }
+    val keyboardController = LocalSoftwareKeyboardController.current
     Scaffold(
         modifier = Modifier.padding(
             start = 20.dp,
@@ -159,6 +163,7 @@ fun LoginScreen(onLogin: () -> Unit) {
                     if (email.text.isNotEmpty() && password.text.isNotEmpty()) {
                         error = false
                         onLogin.invoke()
+                        keyboardController?.hide()
                     } else {
                         error = true
                     }

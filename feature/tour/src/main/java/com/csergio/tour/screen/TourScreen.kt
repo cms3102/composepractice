@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.csergio.common.ui.LoadingAnimation
 import com.csergio.tour.viewmodel.TourViewModel
 import com.csergio.domain.entity.TourData
 import com.csergio.tour.state.TourState
@@ -44,11 +45,7 @@ fun TourScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = "Loading...",
-                    textAlign = TextAlign.Center,
-                )
-                CircularProgressIndicator()
+                LoadingAnimation()
             }
         }
         is TourState.Failure -> {
@@ -88,7 +85,7 @@ fun TourItem(
             .fillMaxWidth()
             .padding(horizontal = 15.dp)
             .clickable {
-                 onItemClick(item)
+                onItemClick(item)
             },
     ) {
         Row(
