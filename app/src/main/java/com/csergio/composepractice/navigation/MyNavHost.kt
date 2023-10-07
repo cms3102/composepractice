@@ -6,7 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.csergio.tour.navigation.tourScreen
@@ -25,7 +27,7 @@ import com.google.gson.Gson
 fun MyNavHost(
     navController: NavHostController
 ) {
-    var loginState by remember { mutableStateOf(false) }
+    var loginState by rememberSaveable { mutableStateOf(false) }
     NavHost(
         navController = navController,
         startDestination = loginRoute,
@@ -37,12 +39,12 @@ fun MyNavHost(
         introduceScreen {
             navController.navigateToTour()
         }
-        tourScreen { tourData ->
+        tourScreen(navController) { tourData ->
             val dataJson = Gson().toJson(tourData)
             val dataUri = Uri.encode(dataJson)
             navController.navigateToTourDetail(dataUri)
         }
-        tourDetailScreen()
-        settingsScreen()
+        tourDetailScreen(navController)
+        settingsScreen(navController)
     }
 }

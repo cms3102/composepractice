@@ -6,13 +6,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.csergio.common.ui.MyScaffold
+import com.csergio.settings.navigation.Settings
 
 @Composable
-fun SettingsScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+fun SettingsScreen(navController: NavController) {
+    MyScaffold(
+        navController = navController,
+        destination = Settings
     ) {
-        Text(text = "설정 화면")
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "설정 화면")
+        }
     }
 }

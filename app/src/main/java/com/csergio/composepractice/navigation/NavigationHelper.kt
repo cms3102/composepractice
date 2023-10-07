@@ -5,7 +5,9 @@ import androidx.navigation.NavDestination
 import com.csergio.common.protocol.DestinationProtocol
 import com.csergio.introduce.navigation.introduceRoute
 import com.csergio.login.navigation.loginRoute
+import com.csergio.settings.navigation.Settings
 import com.csergio.settings.navigation.navigateToSettings
+import com.csergio.tour.navigation.Tour
 import com.csergio.tour.navigation.navigateToTour
 
 object NavigationHelper {

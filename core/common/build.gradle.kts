@@ -45,6 +45,8 @@ dependencies {
     implementation(libs.appcompat)
     implementation(platform(libs.compose.bom))
     implementation(libs.lottie)
+    implementation(libs.compose.navigation)
+    implementation(libs.activity.compose)
     api(libs.material)
     api(libs.ui)
     api(libs.ui.tooling.preview)

@@ -21,44 +21,55 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.csergio.common.theme.PaddingDefaults
 import com.csergio.common.theme.SpaceDefaults
+import com.csergio.common.ui.MyScaffold
 import com.csergio.domain.entity.TourData
+import com.csergio.tour.navigation.TourDetail
 
 @Composable
-fun TourDetailScreen(data: TourData) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
+fun TourDetailScreen(
+    navController: NavController,
+    data: TourData
+) {
+    MyScaffold(
+        navController = navController,
+        destination = TourDetail
     ) {
-        Spacer(modifier = Modifier.height(10.dp))
-        AsyncImage(
-            model = data.image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.aspectRatio(1f/0.7f)
-        )
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = PaddingDefaults.paddingHorizontal)
-                .verticalScroll(rememberScrollState())
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            SpaceDefaults.verticalSpacer()
-            Text(
-                text = "data.title",
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.align(Alignment.Start)
+            Spacer(modifier = Modifier.height(10.dp))
+            AsyncImage(
+                model = data.image,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.aspectRatio(1f/0.7f)
             )
-            SpaceDefaults.verticalSpacer()
-            Text(
-                text = data.description,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.align(Alignment.Start)
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = PaddingDefaults.paddingHorizontal)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                SpaceDefaults.verticalSpacer()
+                Text(
+                    text = "data.title",
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.headlineMedium,
+                    modifier = Modifier.align(Alignment.Start)
+                )
+                SpaceDefaults.verticalSpacer()
+                Text(
+                    text = data.description,
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.align(Alignment.Start)
+                )
+            }
         }
     }
 }

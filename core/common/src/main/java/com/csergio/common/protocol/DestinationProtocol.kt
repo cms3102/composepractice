@@ -8,4 +8,5 @@ interface DestinationProtocol {
     val menuTitle: Int
     val appBarTitle: Int
     val route: String
+    val isMain: Boolean
 }

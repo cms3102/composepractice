@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">ComposePractice</string>
-    <string name="tour_menu_title">관광</string>
-    <string name="tour_app_bar_title">관광</string>
     <string name="undefined_title">미정</string>
     <string name="undefined_app_bar_title">미정</string>
-    <string name="settings_title">설정</string>
-    <string name="settings_app_bar_title">설정</string>
 </resources>

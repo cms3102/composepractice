@@ -27,48 +27,57 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.csergio.common.ui.LoadingAnimation
+import com.csergio.common.ui.MyScaffold
 import com.csergio.tour.viewmodel.TourViewModel
 import com.csergio.domain.entity.TourData
+import com.csergio.tour.navigation.Tour
 import com.csergio.tour.state.TourState
 
 @Composable
 fun TourScreen(
+    navController: NavController,
     viewModel: TourViewModel,
     onItemClick: (item: TourData) -> Unit
 ) {
     val tourState = viewModel.tourState.collectAsStateWithLifecycle()
-    when (val tourData = tourState.value) {
-        is TourState.Loading -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                LoadingAnimation()
+    MyScaffold(
+        navController = navController,
+        destination = Tour
+    ) {
+        when (val tourData = tourState.value) {
+            is TourState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    LoadingAnimation()
+                }
             }
-        }
-        is TourState.Failure -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "데이터 로딩 실패",
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
-        is TourState.Success -> {
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
-                items(
-                    items = tourData.data,
-                    key = { it.id },
-                ) { tourData ->
-                    TourItem(
-                        item = tourData,
-                        onItemClick = onItemClick
+            is TourState.Failure -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "데이터 로딩 실패",
+                        textAlign = TextAlign.Center
                     )
+                }
+            }
+            is TourState.Success -> {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                    items(
+                        items = tourData.data,
+                        key = { it.id },
+                    ) { tourData ->
+                        TourItem(
+                            item = tourData,
+                            onItemClick = onItemClick
+                        )
+                    }
                 }
             }
         }
