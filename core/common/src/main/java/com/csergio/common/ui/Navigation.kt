@@ -11,6 +11,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -55,17 +57,14 @@ fun MyTopAppBar(
 @Composable
 fun MyScaffold(
     navController: NavController,
+    snackbarHostState: SnackbarHostState? = null,
     destination: DestinationProtocol? = null,
     topBar: @Composable (() -> Unit)? = null,
     bottomBar: @Composable () -> Unit = {},
     content: @Composable () -> Unit
 ) {
-    val backStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = backStackEntry?.destination
     val topAppBarScrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
-    println("현재 위치1 : ${currentDestination?.route}")
-    println("현재 위치2 : ${topAppBarScrollBehavior.state.heightOffset}")
-    println("현재 위치3 : ${topAppBarScrollBehavior.state.contentOffset}")
+
     val showTopAppBar = destination != null
     Scaffold(
         modifier = if (showTopAppBar) {
@@ -79,8 +78,10 @@ fun MyScaffold(
             }
         },
         bottomBar = bottomBar,
+        snackbarHost = {
+            snackbarHostState?.let { SnackbarHost(hostState = it) }
+        },
         content = {
-            println("패딩 : $it")
             Box(
                 modifier = Modifier
                     .padding(it)

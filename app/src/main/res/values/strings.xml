@@ -2,4 +2,5 @@
     <string name="app_name">ComposePractice</string>
     <string name="undefined_title">미정</string>
     <string name="undefined_app_bar_title">미정</string>
+    <string name="undefined_snackbar_message">추후 추가 예정입니다.</string>
 </resources>
