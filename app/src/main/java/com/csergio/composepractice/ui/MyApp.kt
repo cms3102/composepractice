@@ -43,7 +43,6 @@ import kotlin.coroutines.coroutineContext
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyApp(navHostController: NavHostController = rememberNavController()) {
-//    println("현재 위치 : ${currentDestination?.label} / $currentDestination")
 
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()

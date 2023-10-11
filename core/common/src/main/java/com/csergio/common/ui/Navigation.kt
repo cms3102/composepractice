@@ -1,9 +1,15 @@
 package com.csergio.common.ui
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -19,6 +25,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
@@ -69,6 +76,7 @@ fun MyScaffold(
     Scaffold(
         modifier = if (showTopAppBar) {
             Modifier.nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
+//                .consumeWindowInsets(WindowInsets.systemBars)
         } else {
             Modifier
         },
@@ -82,6 +90,8 @@ fun MyScaffold(
             snackbarHostState?.let { SnackbarHost(hostState = it) }
         },
         content = {
+            println("패딩1 : ${WindowInsets.systemBars}")
+            println("패딩1 : $it")
             Box(
                 modifier = Modifier
                     .padding(it)

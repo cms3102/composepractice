@@ -1,6 +1,7 @@
 package com.csergio.common.theme
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -54,13 +55,15 @@ fun ComposePracticeTheme(
         else -> LightColorScheme
     }
     val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
+//    if (!view.isInEditMode) {
+//        SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-        }
-    }
+//            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = Color.WHITE
+//            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
+//        }
+//    }
 
     MaterialTheme(
         colorScheme = colorScheme,
