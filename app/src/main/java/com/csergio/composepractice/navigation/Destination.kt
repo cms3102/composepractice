@@ -22,12 +22,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.csergio.common.protocol.DestinationProtocol
 import com.csergio.composepractice.R
+import com.csergio.map.navigation.GoogleMap
 import com.csergio.settings.navigation.Settings
 import com.csergio.tour.navigation.Tour
 import com.csergio.tour.navigation.TourDetail
 
 internal val mainDestinations = listOf(
     Tour,
+//    GoogleMap,
     Undefined,
     Settings
 )
@@ -35,6 +37,7 @@ internal val mainDestinations = listOf(
 internal val destinations = listOf(
     Tour,
     TourDetail,
+//    GoogleMap,
     Undefined,
     Settings
 )

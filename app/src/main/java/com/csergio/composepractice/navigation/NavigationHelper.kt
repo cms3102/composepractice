@@ -5,6 +5,8 @@ import androidx.navigation.NavDestination
 import com.csergio.common.protocol.DestinationProtocol
 import com.csergio.introduce.navigation.introduceRoute
 import com.csergio.login.navigation.loginRoute
+import com.csergio.map.navigation.GoogleMap
+import com.csergio.map.navigation.navigateToMap
 import com.csergio.settings.navigation.Settings
 import com.csergio.settings.navigation.navigateToSettings
 import com.csergio.tour.navigation.Tour
@@ -18,6 +20,7 @@ object NavigationHelper {
     internal fun NavController.navigateToTab(destination: DestinationProtocol) {
         when (destination) {
             is Tour -> navigateToTour()
+            is GoogleMap -> navigateToMap()
             is Undefined -> {}
             is Settings -> navigateToSettings()
         }

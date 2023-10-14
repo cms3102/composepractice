@@ -1,7 +1,10 @@
 package com.csergio.tour.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Place
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -23,8 +26,8 @@ const val tourDetailRoute = "tour_detail_route"
 const val tourDetailArg = "tourData"
 
 object Tour : DestinationProtocol {
-    override val selectedIcon: ImageVector = Icons.Filled.Place
-    override val unselectedIcon: ImageVector = Icons.Outlined.Place
+    override val selectedIcon: ImageVector = Icons.Filled.DateRange
+    override val unselectedIcon: ImageVector = Icons.Outlined.DateRange
     override val menuTitle: Int = R.string.tour_menu_title
     override val appBarTitle: Int = R.string.tour_app_bar_title
     override val route: String = tourRoute

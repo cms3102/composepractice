@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.csergio.core.theme"
+    namespace = "com.csergio.map"
     compileSdk = 33
 
     defaultConfig {
@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     buildFeatures { // added to fix backend internal error
         compose = true
@@ -40,21 +40,20 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:common"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
+    implementation(libs.material)
     implementation(platform(libs.compose.bom))
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.compose.material3)
     implementation(libs.lottie)
-    implementation(libs.compose.navigation)
-    implementation(libs.activity.compose)
-    api(libs.permissions)
-    api(libs.material)
-    api(libs.ui)
-    api(libs.ui.tooling.preview)
-    api(libs.compose.material3)
-    api(libs.iconics.core)
-    api(libs.iconics.compose)
-    api(libs.fontawesome)
+    implementation(libs.google.map.compose)
+    implementation(libs.google.map.compose.utils)
+    implementation(libs.google.map.compose.widgets)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

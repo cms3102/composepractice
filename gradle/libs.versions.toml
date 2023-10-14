@@ -28,6 +28,8 @@ ksp-plugin = "1.8.10-1.0.9"
 iconics-core = "5.4.0"
 iconics-compose = "5.4.0"
 fontawesome = "5.9.0.2-kotlin"
+permissions = "0.33.2-alpha"
+google-map-compose = "3.1.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -67,6 +69,10 @@ javax-inject = { module = "javax.inject:javax.inject", version.ref = "javax-inje
 iconics-core = { module = "com.mikepenz:iconics-core", version.ref = "iconics-core" }
 iconics-compose = { module = "com.mikepenz:iconics-compose", version.ref = "iconics-compose" }
 fontawesome = { module = "com.mikepenz:fontawesome-typeface", version.ref = "fontawesome" }
+permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "permissions" }
+google-map-compose = { module = "com.google.maps.android:maps-compose", version.ref = "google-map-compose" }
+google-map-compose-utils = { module = "com.google.maps.android:maps-compose-utils", version.ref = "google-map-compose" }
+google-map-compose-widgets = { module = "com.google.maps.android:maps-compose-widgets", version.ref = "google-map-compose" }
 
 
 [plugins]

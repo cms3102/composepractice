@@ -17,6 +17,7 @@ import com.csergio.introduce.navigation.introduceScreen
 import com.csergio.introduce.navigation.navigateToIntroduce
 import com.csergio.login.navigation.loginRoute
 import com.csergio.login.navigation.loginScreen
+import com.csergio.map.navigation.mapScreen
 import com.csergio.settings.navigation.settingsScreen
 import com.csergio.tour.navigation.navigateToTourDetail
 import com.csergio.tour.navigation.tourDetailScreen
@@ -45,6 +46,7 @@ fun MyNavHost(
             navController.navigateToTourDetail(dataUri)
         }
         tourDetailScreen(navController)
+        mapScreen(navController)
         settingsScreen(navController)
     }
 }

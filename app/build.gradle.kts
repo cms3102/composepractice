@@ -61,6 +61,7 @@ dependencies {
     implementation(project(":feature:introduce"))
     implementation(project(":feature:login"))
     implementation(project(":feature:settings"))
+    implementation(project(":feature:map"))
 
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
