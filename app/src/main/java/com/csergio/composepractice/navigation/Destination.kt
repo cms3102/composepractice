@@ -29,7 +29,7 @@ import com.csergio.tour.navigation.TourDetail
 
 internal val mainDestinations = listOf(
     Tour,
-//    GoogleMap,
+    GoogleMap,
     Undefined,
     Settings
 )
@@ -37,7 +37,7 @@ internal val mainDestinations = listOf(
 internal val destinations = listOf(
     Tour,
     TourDetail,
-//    GoogleMap,
+    GoogleMap,
     Undefined,
     Settings
 )

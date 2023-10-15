@@ -46,7 +46,7 @@ fun MyNavHost(
             navController.navigateToTourDetail(dataUri)
         }
         tourDetailScreen(navController)
-        mapScreen(navController)
+        mapScreen()
         settingsScreen(navController)
     }
 }

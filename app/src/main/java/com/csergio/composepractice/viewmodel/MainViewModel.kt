@@ -1,4 +1,4 @@
-package com.csergio.composepractice
+package com.csergio.composepractice.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

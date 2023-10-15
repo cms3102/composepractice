@@ -2,7 +2,6 @@ package com.csergio.tour.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Place
@@ -16,8 +15,8 @@ import androidx.navigation.navArgument
 import com.csergio.common.protocol.DestinationProtocol
 import com.csergio.domain.entity.TourData
 import com.csergio.features.tour.R
-import com.csergio.tour.screen.TourDetailScreen
-import com.csergio.tour.screen.TourScreen
+import com.csergio.tour.ui.TourDetailScreen
+import com.csergio.tour.ui.TourScreen
 import com.csergio.tour.viewmodel.TourViewModel
 import com.google.gson.Gson
 

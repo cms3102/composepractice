@@ -10,7 +10,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.csergio.common.protocol.DestinationProtocol
 import com.csergio.feature.settings.R
-import com.csergio.settings.SettingsScreen
+import com.csergio.settings.ui.SettingsScreen
 
 const val settingsRoute = "settings_route"
 

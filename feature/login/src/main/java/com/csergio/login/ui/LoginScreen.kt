@@ -1,4 +1,4 @@
-package com.csergio.login
+package com.csergio.login.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

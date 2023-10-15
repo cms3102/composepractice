@@ -1,11 +1,8 @@
-package com.csergio.composepractice
+package com.csergio.composepractice.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -15,8 +12,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
-import com.csergio.composepractice.ui.MyApp
 import com.csergio.common.theme.ComposePracticeTheme
+import com.csergio.composepractice.viewmodel.MainViewModel
+import com.csergio.composepractice.viewmodel.SplashState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

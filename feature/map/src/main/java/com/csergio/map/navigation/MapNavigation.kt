@@ -9,7 +9,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.csergio.common.protocol.DestinationProtocol
 import com.csergio.map.R
-import com.csergio.map.screen.MapScreen
+import com.csergio.map.ui.MapScreen
 
 const val mapRoute = "map_route"
 
@@ -32,8 +32,8 @@ fun NavController.navigateToMap() {
     navigate(mapRoute)
 }
 
-fun NavGraphBuilder.mapScreen(navController: NavController) {
+fun NavGraphBuilder.mapScreen() {
     composable(mapRoute) {
-        MapScreen(navController)
+        MapScreen()
     }
 }
