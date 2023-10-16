@@ -42,7 +42,7 @@ android {
 dependencies {
 
     implementation(libs.core.ktx)
-    implementation(libs.appcompat)
+    implementation(libs.appcompat) // Flow 사용하게 해줌
     implementation(platform(libs.compose.bom))
     implementation(libs.lottie)
     implementation(libs.compose.navigation)
