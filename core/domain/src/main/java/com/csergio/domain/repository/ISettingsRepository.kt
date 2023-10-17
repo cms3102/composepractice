@@ -6,4 +6,6 @@ interface ISettingsRepository {
 
     fun isDarkTheme(): Flow<Boolean>
 
+    suspend fun saveThemeSetting(isDarkTheme: Boolean): Unit
+
 }

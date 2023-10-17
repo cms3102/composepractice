@@ -1,16 +1,16 @@
 package com.csergio.composepractice.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.csergio.domain.usecase.ThemeSettingUseCase
+import com.csergio.domain.usecase.LoadThemeSettingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val themeSettingUseCase: ThemeSettingUseCase
+    loadThemeSettingUseCase: LoadThemeSettingUseCase
 ) : ViewModel() {
 
-    internal val isDarkTheme = themeSettingUseCase.invoke()
+    internal val isDarkTheme = loadThemeSettingUseCase()
 
 }
 

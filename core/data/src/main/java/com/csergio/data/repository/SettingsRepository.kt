@@ -2,6 +2,7 @@ package com.csergio.data.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
 import com.csergio.data.database.themeSettingKey
 import com.csergio.domain.repository.ISettingsRepository
 import kotlinx.coroutines.flow.Flow
@@ -14,5 +15,14 @@ class SettingsRepository @Inject constructor(
 ) : ISettingsRepository {
     override fun isDarkTheme(): Flow<Boolean> = dataStore.data.map { preferences ->
         preferences[themeSettingKey] ?: false
+    }
+
+    override suspend fun saveThemeSetting(isDarkTheme: Boolean) {
+        dataStore.edit {
+            it.set(
+                key = themeSettingKey,
+                value = isDarkTheme
+            )
+        }
     }
 }

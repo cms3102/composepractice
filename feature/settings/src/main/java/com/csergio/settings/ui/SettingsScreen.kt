@@ -12,6 +12,7 @@ import com.csergio.settings.viewmodel.SettingsViewModel
 @Composable
 fun SettingsScreen(
     navController: NavController,
+    viewModel: SettingsViewModel = hiltViewModel()
 ) {
     MyScaffold(
         navController = navController,
@@ -23,11 +24,7 @@ fun SettingsScreen(
                 SettingItem(type = menu) { switched ->
                     when(menu) {
                         SettingMenu.ThemeMode -> {
-                            if (switched) {
-
-                            } else {
-
-                            }
+                            viewModel.saveThemeSetting(switched)
                         }
                     }
                 }
