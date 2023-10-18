@@ -48,7 +48,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ComposePracticeTheme(
-                darkTheme = viewModel.isDarkTheme.collectAsState(initial = false).value
+                darkTheme = viewModel.isDarkTheme.collectAsState(initial = false).value,
+                dynamicColor = false
             ) {
                 MyApp()
             }

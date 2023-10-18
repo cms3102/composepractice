@@ -185,7 +185,7 @@ fun LoginScreen(onLogin: () -> Unit) {
                     text = "Or use",
                     modifier = Modifier
                         .align(Alignment.Center)
-                        .background(Color.White)
+                        .background(MaterialTheme.colorScheme.background)
                         .padding(horizontal = 5.dp)
                 )
             }

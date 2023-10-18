@@ -13,6 +13,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.SnackbarHostState
@@ -108,7 +109,7 @@ fun BottomNavigationBar(
                 elevation = 10.dp,
                 shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
             ),
-        containerColor = Color.White
+        containerColor = MaterialTheme.colorScheme.background
     ) {
         destinations.forEach { destination ->
             BottomNavigationItem(

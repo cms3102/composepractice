@@ -47,20 +47,28 @@ fun ComposePracticeTheme(
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            println("어디냐1")
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> {
+            println("어디냐2")
+            DarkColorScheme
+        }
+        else -> {
+            println("어디냐3")
+            LightColorScheme
+        }
     }
     val view = LocalView.current
 //    if (!view.isInEditMode) {
 //        SideEffect {
             val window = (view.context as Activity).window
-//            window.statusBarColor = colorScheme.primary.toArgb()
-            window.statusBarColor = Color.WHITE
-//            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
+            println("스테이터스바 컬러1 : $darkTheme")
+            window.statusBarColor = colorScheme.background.toArgb()
+//            window.statusBarColor = Color.WHITE
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+//            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
 //        }
 //    }
 

@@ -46,7 +46,7 @@ fun IntroduceScreen(onFinished: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(MaterialTheme.colorScheme.background),
     ) {
         Spacer(modifier = Modifier.height(20.dp))
         HorizontalPager(
@@ -118,7 +118,7 @@ fun IntroItem(item: Intro, page: Int) {
             modifier = Modifier.fillMaxSize(),
             border = BorderStroke(1.dp, Color.LightGray.copy(0.5f)),
             shape = RoundedCornerShape(12.dp),
-            color = Color.White
+            color = MaterialTheme.colorScheme.background
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
