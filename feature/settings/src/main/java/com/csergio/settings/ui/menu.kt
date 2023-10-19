@@ -37,6 +37,7 @@ enum class SettingMenu {
 @Composable
 fun SettingItem(
     type: SettingMenu,
+    switched: Boolean,
     onClick: (switched: Boolean) -> Unit = {},
 ) {
     Spacer(
@@ -55,7 +56,7 @@ fun SettingItem(
         val name: String
         var isButton: Boolean = true
         val icon: ImageVector
-        var switched by remember { mutableStateOf(false) }
+
         when(type) {
             SettingMenu.ThemeMode -> {
                 name = stringResource(id = R.string.setting_menu_theme)
@@ -76,9 +77,8 @@ fun SettingItem(
             }
         } else {
             Switch(
-                checked = switched ?: false,
+                checked = switched,
                 onCheckedChange = { isSwitched ->
-                    switched = isSwitched
                     onClick(isSwitched)
                 }
             )
