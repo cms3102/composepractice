@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
 //        enableEdgeToEdge(
@@ -51,16 +54,9 @@ class MainActivity : ComponentActivity() {
                 darkTheme = viewModel.isDarkTheme.collectAsState(initial = false).value,
                 dynamicColor = false
             ) {
-                MyApp()
+                MyApp(windowSizeClass = calculateWindowSizeClass(this))
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ComposePracticeTheme {
-        MyApp(rememberNavController())
-    }
-}

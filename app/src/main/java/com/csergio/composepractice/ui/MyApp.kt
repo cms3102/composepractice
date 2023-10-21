@@ -1,5 +1,11 @@
 package com.csergio.composepractice.ui
 
+import android.os.Bundle
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideIn
+import androidx.compose.animation.slideOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
@@ -18,6 +24,10 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
@@ -33,7 +43,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
@@ -53,9 +65,12 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlin.coroutines.coroutineContext
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
-fun MyApp(navHostController: NavHostController = rememberNavController()) {
+fun MyApp(
+    navHostController: NavHostController = rememberNavController(),
+    windowSizeClass: WindowSizeClass
+) {
 
     var dialogState by remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -66,7 +81,7 @@ fun MyApp(navHostController: NavHostController = rememberNavController()) {
             dialogState = false
         }
     }
-
+    
     MyScaffold(
         navController = navHostController,
         snackbarHostState = snackbarHostState,
@@ -75,22 +90,29 @@ fun MyApp(navHostController: NavHostController = rememberNavController()) {
             val currentDestination = backStackEntry?.destination
             val show = currentDestination?.findDestination()?.isMain ?: false
             val undefinedMessage = LocalContext.current.getString(R.string.undefined_snackbar_message)
-
-            if (show) {
-                BottomNavigationBar(
-                    destinations = mainDestinations,
-                    currentDestination = currentDestination,
-                ) { destination ->
-                    if (destination.route == Undefined.route) {
-                        dialogState = true
+            val bottomNavigationVisibility = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Compact
+            println("현재 데스티네이션 : $currentDestination / $bottomNavigationVisibility")
+//            if (show) {
+                AnimatedVisibility(
+                    visible = show,
+                    enter = fadeIn() + slideIn { IntOffset(0, 120) },
+                    exit = fadeOut() + slideOut { IntOffset(0, 120) }
+                ) {
+                    BottomNavigationBar(
+                        destinations = mainDestinations,
+                        currentDestination = currentDestination,
+                    ) { destination ->
+                        if (destination.route == Undefined.route) {
+                            dialogState = true
 //                        coroutineScope.launch {
 //                            snackbarHostState.showSnackbar(message = undefinedMessage)
 //                        }
-                    } else {
-                        navHostController.navigateToTab(destination)
+                        } else {
+                            navHostController.navigateToTab(destination)
+                        }
                     }
                 }
-            }
+//            }
         }
     ) {
         MyNavHost(navController = navHostController)

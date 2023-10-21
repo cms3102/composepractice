@@ -55,6 +55,7 @@ dependencies {
     api(libs.iconics.core)
     api(libs.iconics.compose)
     api(libs.fontawesome)
+    api(libs.compose.windowSizeClass)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
