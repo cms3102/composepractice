@@ -1,5 +1,6 @@
 package com.csergio.tour.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Place
@@ -47,11 +48,12 @@ fun NavController.navigateToTour() {
     navigate(tourRoute)
 }
 
-fun NavGraphBuilder.tourScreen(navController: NavController, onItemClick: (TourData) -> Unit) {
+fun NavGraphBuilder.tourScreen(navController: NavController, paddingValues: PaddingValues, onItemClick: (TourData) -> Unit) {
     composable(tourRoute) {
         val viewModel = hiltViewModel<TourViewModel>()
         TourScreen(
             navController = navController,
+            paddingValues = paddingValues,
             viewModel = viewModel,
             onItemClick = onItemClick
         )

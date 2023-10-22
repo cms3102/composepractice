@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.gson)
+    implementation(libs.compose.animation.animation)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

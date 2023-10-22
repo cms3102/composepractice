@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -63,22 +65,24 @@ fun MyTopAppBar(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun MyScaffold(
+    modifier: Modifier = Modifier,
     navController: NavController,
     snackbarHostState: SnackbarHostState? = null,
     destination: DestinationProtocol? = null,
     topBar: @Composable (() -> Unit)? = null,
     bottomBar: @Composable () -> Unit = {},
-    content: @Composable () -> Unit
+    content: @Composable (paddingValues: PaddingValues) -> Unit
 ) {
     val topAppBarScrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     val showTopAppBar = destination != null
     Scaffold(
         modifier = if (showTopAppBar) {
-            Modifier.nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
+            modifier
+                .nestedScroll(topAppBarScrollBehavior.nestedScrollConnection)
 //                .consumeWindowInsets(WindowInsets.systemBars)
         } else {
-            Modifier
+            modifier
         },
         topBar = topBar ?: {
             if (showTopAppBar) {
@@ -92,12 +96,12 @@ fun MyScaffold(
         content = {
             println("패딩1 : ${WindowInsets.systemBars}")
             println("패딩1 : $it")
-            Box(
-                modifier = Modifier
-                    .padding(it)
-            ) {
-                content()
-            }
+//            Box(
+//                modifier = Modifier.fillMaxSize()
+//                    .padding(it)
+//            ) {
+                content(it)
+//            }
         }
     )
 }

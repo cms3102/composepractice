@@ -3,6 +3,7 @@ package com.csergio.tour.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,11 +39,13 @@ import com.csergio.tour.state.TourState
 @Composable
 fun TourScreen(
     navController: NavController,
+    paddingValues: PaddingValues,
     viewModel: TourViewModel,
     onItemClick: (item: TourData) -> Unit
 ) {
     val tourState = viewModel.tourState.collectAsStateWithLifecycle()
     MyScaffold(
+        modifier = Modifier.padding(paddingValues),
         navController = navController,
         destination = Tour
     ) {

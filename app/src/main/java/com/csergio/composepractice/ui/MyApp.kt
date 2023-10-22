@@ -115,7 +115,7 @@ fun MyApp(
 //            }
         }
     ) {
-        MyNavHost(navController = navHostController)
+        MyNavHost(navController = navHostController, paddingValues = it)
     }
 }
 

@@ -2,6 +2,7 @@ package com.csergio.composepractice.navigation
 
 import android.net.Uri
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,7 +27,8 @@ import com.google.gson.Gson
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MyNavHost(
-    navController: NavHostController
+    navController: NavHostController,
+    paddingValues: PaddingValues
 ) {
     var loginState by rememberSaveable { mutableStateOf(false) }
     NavHost(
@@ -40,7 +42,7 @@ fun MyNavHost(
         introduceScreen {
             navController.navigateToTour()
         }
-        tourScreen(navController) { tourData ->
+        tourScreen(navController, paddingValues) { tourData ->
             val dataJson = Gson().toJson(tourData)
             val dataUri = Uri.encode(dataJson)
             navController.navigateToTourDetail(dataUri)
